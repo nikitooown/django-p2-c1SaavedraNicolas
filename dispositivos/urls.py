@@ -1,0 +1,11 @@
+# dispositivos/urls.py
+from django.urls import path
+from . import views
+
+
+app_name = "dispositivos"
+
+
+urlpatterns = [
+    path("", views.inicio, name="inicio"),
+]
