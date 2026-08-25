@@ -6,7 +6,16 @@ from django.http import HttpResponse
 from django.http import HttpResponse
 
 def inicio(request):
-    return HttpResponse("<h1>EcoEnergy</h1><p>Back End en funcionamiento</p>")
+    contexto = {
+        "sistema": "EcoEnergy",
+        "mensaje": "Monitoreo energético responsable",
+        "asignatura": "Programación Back End",
+    }
+    return render(
+        request,
+        "dispositivos/inicio.html",
+        contexto,
+)
 
 def detalle_dispositivo(request, dispositivo_id):
     # Simulamos que solo el dispositivo con ID 1 existe
@@ -15,3 +24,15 @@ def detalle_dispositivo(request, dispositivo_id):
     
     # Cualquier otro ID responde con 404
     return HttpResponse("<h1>Error 404</h1><p>Dispositivo no encontrado</p>", status=404)
+
+def catalogo(request):
+    dispositivos = [
+    {"nombre": "Medidor inteligente", "estado": "Activo"},
+    {"nombre": "Sensor de temperatura", "estado": "Activo"},
+    {"nombre": "Climatizador", "estado": "Revisión"},
+    ]
+    return render(
+    request,
+    "dispositivos/catalogo.html",
+    {"dispositivos": dispositivos},
+    )

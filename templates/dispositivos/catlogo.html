@@ -1,15 +1,14 @@
-<!-- templates/base.html -->
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<title>{% block title %}EcoEnergy{% endblock %}</title>
-</head>
-<body>
-<nav>
-<a href="{% url 'dispositivos:inicio' %}">Inicio</a>
-<a href="{% url 'dispositivos:catalogo' %}">Dispositivos</a>
-</nav>
-<main>{% block content %}{% endblock %}</main>
-</body>
-</html>
+    <!-- templates/dispositivos/catalogo.html -->
+    {% extends "base.html" %}
+
+    {% block title %}Dispositivos | EcoEnergy{% endblock %}
+        {% block content %}
+        <h1>Dispositivos</h1>
+        <ul>
+    {% for dispositivo in dispositivos %}
+    <li>{{ dispositivo.nombre }} — {{ dispositivo.estado }}</li>
+    {% empty %}
+    <li>No existen dispositivos disponibles.</li>
+    {% endfor %}
+    </ul>
+    {% endblock %}
