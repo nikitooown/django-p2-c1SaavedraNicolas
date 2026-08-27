@@ -29,6 +29,7 @@ def catalogo(request):
         {"nombre": "Medidor inteligente", "estado": "Activo", "consumo_kwh": 45.5},
         {"nombre": "Sensor de temperatura", "estado": "Activo", "consumo_kwh": 12.0},
         {"nombre": "Climatizador", "estado": "Revisión", "consumo_kwh": 110.2},
+                {"nombre": "Climatizador", "estado": "Revisión", "consumo_kwh": 110.2},
     ]
 
     total = len(dispositivos)
