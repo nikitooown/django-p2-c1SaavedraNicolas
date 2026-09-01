@@ -1,14 +1,54 @@
 [
     {
-        "id": 1,
-        "nombre": "Medidor inteligente",
-        "estado": "Activo",
-        "consumo_kwh": 18.4
+        "id": 1, 
+        "nombre": "Medidor inteligente", 
+        "consumo_kwh": 18.4, 
+        "zona_id": 1, 
+        "categoria_id": 3
     },
     {
-        "id": 2,
-        "nombre": "Climatizador",
-        "estado": "Revisión",
-        "consumo_kwh": 32.7
+        "id": 2, 
+        "nombre": "Climatizador Bodega", 
+        "consumo_kwh": 62.7, 
+        "zona_id": 1, 
+        "categoria_id": 1
+    },
+    {
+        "id": 3, "nombre": "Luminaria LED pasillo", 
+        "consumo_kwh": 9.2, 
+        "zona_id": 1, 
+        "categoria_id": 2},
+    {
+        "id": 4, "nombre": "Aire acondicionado oficina", 
+        "consumo_kwh": 35.0, 
+        "zona_id": 2, 
+        "categoria_id": 1
+    },
+    {
+        "id": 5, 
+        "nombre": "Notebook administración", 
+        "consumo_kwh": 4.5, 
+        "zona_id": 2, 
+        "categoria_id": 3},
+    {
+        "id": 6, 
+        "nombre": "Motor línea de ensamblaje", 
+        "consumo_kwh": 210.0, 
+        "zona_id": 3, 
+        "categoria_id": 1
+    },
+    {
+        "id": 7, 
+        "nombre": "Iluminación industrial", 
+        "consumo_kwh": 45.8, 
+        "zona_id": 3, 
+        "categoria_id": 2
+    },
+    {
+        "id": 8, 
+        "nombre": "Servidor principal", 
+        "consumo_kwh": 28.3, 
+        "zona_id": 4, 
+        "categoria_id": 3
     }
 ]
