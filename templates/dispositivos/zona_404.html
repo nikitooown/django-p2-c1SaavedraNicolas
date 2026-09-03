@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Zona no encontrada | EcoEnergy{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <div class="card border-0 shadow-sm text-center py-5">
+    <div class="card-body">
+      <div class="display-1 mb-3">🔍</div>
+      <h2 class="fw-bold mb-2">Ups, esa zona no existe</h2>
+      <p class="text-muted mb-4">
+        Revisa el listado de zonas o vuelve al inicio para seguir monitoreando el consumo.
+      </p>
+      <a href="{% url 'dispositivos:lista_zonas' %}" class="btn btn-success">Ver zonas disponibles</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
