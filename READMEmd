@@ -1,32 +1,74 @@
-# EcoEnergy - Backend
+# EcoEnergy — Fase 1 (Programación Back End · TI3041)
 
-## Descripción y Objetivo
-Backend del proyecto **EcoEnergy**, desarrollado en Python y Django como parte de **Proyecto Integrado**. El objetivo de este servicio es centralizar la arquitectura del servidor, la lógica de negocio y la gestión de datos para el ecosistema EcoEnergy.
+Aplicación Django del lado del servidor para consultar zonas de consumo
+energético y los dispositivos instalados en ellas. Esta fase usa archivos
+JSON como fuente de datos (sin Models, ORM ni migraciones).
 
----
+## Requisitos
 
-## Requisitos Previos
-* **Python 3.x**
-* **Git**
-* Gestor de paquetes **pip**
-* Entorno de consola / terminal (Git Bash / MINGW64, PowerShell o terminal Linux/macOS)
+- Python 3.10 o superior
+- pip
 
----
+## Instalación
 
-## Clonación del Repositorio
-Para clonar el repositorio localmente, ejecuta:
+1. Clona el repositorio:
+```bash
+   git clone https://github.com/nikitooown/django-p2-c1SaavedraNicolas.git
+   cd django-p2-c1SaavedraNicolas
+```
+
+2. Crea y activa un entorno virtual:
+```bash
+   python -m venv .venv
+   source .venv/bin/activate      # Linux / Mac / Git Bash
+   # .venv\Scripts\Activate.ps1   # Windows PowerShell
+```
+
+3. Instala las dependencias:
+```bash
+   pip install -r requirements.txt
+```
+
+## Ejecución
 
 ```bash
-git clone https://github.com/nikitooown/django-p2-c1SaavedraNicolas.git
-cd django-p2-c1SaavedraNicolas
-Ruta de trabajo: Proyecto Integrado / EcoEnergy
+python manage.py check
+python manage.py runserver
+```
 
-Creación y Activación de Entorno Virtual (.venv)
-En Git Bash / MINGW64 (Windows):
-Bash
-# Crear el entorno virtual
-python -m venv .venv
+Abre `http://127.0.0.1:8000/` en el navegador.
 
-# Activar el entorno virtual
-source .venv/Scripts/activate
-En PowerShell / CMD (Windows):# EcoEnergy - Backend
+## Rutas funcionales
+
+| Ruta | Descripción |
+|---|---|
+| `/` | Página de inicio |
+| `/zonas/` | Listado de todas las zonas registradas en `zonas.json` |
+| `/zonas/<id>/` | Detalle de una zona: dispositivos, categoría, consumo total y estado (NORMAL/ALERTA) |
+
+## Pruebas realizadas
+
+- **Zona con dispositivos** (ej. `/zonas/1/`): muestra tabla con dispositivos, consumo total calculado dinámicamente y estado según el límite.
+- **Zona sin dispositivos** (`/zonas/5/`, Estacionamiento): muestra mensaje "Esta zona no tiene dispositivos" en vez de una tabla vacía.
+- **Zona inexistente** (`/zonas/999/`): responde con página 404 personalizada, sin exponer errores técnicos.
+- **Estados NORMAL/ALERTA**: verificados comparando `consumo_total` contra `limite_kwh` de cada zona (ej. Oficinas Administrativas: 39.5 kWh > 30 kWh → ALERTA).
+
+## Estructura del proyecto
+
+
+config/                  # Configuración del proyecto Django
+dispositivos/
+  services.py             # Carga y cruce de los JSON, cálculo de consumo/estado
+  views.py                # Vistas: inicio, lista_zonas, detalles_zona
+  urls.py                 # Rutas de la app
+data/
+  zonas.json
+  categorias.json
+  dispositivos.json
+templates/
+  base.html                # Plantilla base con navegación (Bootstrap 5)
+  dispositivos/
+    inicio.html
+    lista_zonas.html
+    detalles_zona.html
+    zona_404.html
